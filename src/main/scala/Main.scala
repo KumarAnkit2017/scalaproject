@@ -1,3 +1,5 @@
+
+
 object Main extends App{
     val numb1:Int=20
     val numb2:Int=20
