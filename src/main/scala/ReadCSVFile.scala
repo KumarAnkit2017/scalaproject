@@ -1,4 +1,5 @@
-import org.apache.spark.sql.{SparkSession, DataFrame}
+import com.services.{DataFrameServices, DataFrameServicesImpl}
+import org.apache.spark.sql.{DataFrame, SparkSession}
 
 object ReadCSVAndConvertToAvro {
 
@@ -12,11 +13,23 @@ object ReadCSVAndConvertToAvro {
       .getOrCreate()
 
     try {
-      val df = spark.read
+      val df: DataFrame = spark.read
         .option("header", "true")
         .option("inferSchema", "true")
         .csv(csvPath)
-        df.show();
+
+      val dataFrameServices: DataFrameServices = new DataFrameServicesImpl()
+
+      dataFrameServices.totalWealthByBillionarsOfWorldUS(df);
+
+      dataFrameServices.totalWealthByBillionarsOfWorldINR(df);
+
+      dataFrameServices.averAgeOfBillionarsHavingNetworthGt18(df);
+
+      dataFrameServices.industryHavingMorebillionars(df);
+
+      
+
 
     } catch {
       case e: Exception =>
