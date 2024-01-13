@@ -28,9 +28,6 @@ object ReadCSVAndConvertToAvro {
 
       dataFrameServices.industryHavingMorebillionars(df);
 
-      
-
-
     } catch {
       case e: Exception =>
         println(s"Error during CSV to Avro conversion: ${e.getMessage}")
