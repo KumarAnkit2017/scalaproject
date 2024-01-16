@@ -1,6 +1,4 @@
-import org.apache.spark.sql.functions.{avg, desc}
 import org.apache.spark.sql.types.{IntegerType, StringType, StructField, StructType}
-import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.sql.{Row, SparkSession}
 
 case class Person(id:Int,name:String,age:Int)
