@@ -1,3 +1,4 @@
+import org.apache.spark.sql.SparkSession
 import org.apache.spark.{SparkConf, SparkContext}
 
 
@@ -6,6 +7,8 @@ object CreateRDDAndPerformAction {
   def main(args : Array[String]):Unit={
     val sparksConfig=new SparkConf().setAppName("RDDCreateAndExecution").setMaster("local");
     val sc=new SparkContext(sparksConfig);
+
+
 
     val listOfData=List(1,2,3,4,5,4,3,6,7,8,5)
     val createDataset=sc.parallelize(listOfData); /// parallelize- It distributes the data into the different nodes
@@ -47,6 +50,12 @@ object CreateRDDAndPerformAction {
 
     ///4.4 taken() ---It is an action to take first 3 element from RDD2
     //RDD2.take(3).foreach(x=>println(x));
+
+
+    val Rdd3= RDD2.map(x=>(x,"A"+x))
+    Rdd3.collect().foreach(println);
+
+    
 
 
 
