@@ -1,7 +1,7 @@
 package com.services
 
 import org.apache.spark.sql.DataFrame
-import org.apache.spark.sql.functions.{avg, desc}
+import org.apache.spark.sql.functions.{avg, desc, sum}
 
 class DataFrameServicesImpl extends DataFrameServices {
 
@@ -24,6 +24,7 @@ class DataFrameServicesImpl extends DataFrameServices {
 
   def averAgeOfBillionarsHavingNetworthGt18(dataframe: DataFrame):  Unit= {
     //val averageAge = dataframe.filter("net_worth > 18").agg(avg("age4").as("average_age")).collect()(0)(0);
+    //val averageAge = dataframe.filter("net_worth > 18").agg(avg("age4").as("average_age"));
     val averageAge = dataframe.filter("net_worth > 18").agg(avg("age4").as("average_age"));
     averageAge.show();
     println(s"3. Average Age of Billionaires with Net Worth > 18 billion: $averageAge")
